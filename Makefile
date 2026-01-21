@@ -8,7 +8,7 @@ FLAGS = -Wall -Wextra -Werror
 
 OPTION = -c
 
-SRC = 	function.c parser/check_number.c parser/parser.c parser/strategy_parser.c
+SRC = 	function.c parser/stack_parser.c parser/parser.c parser/strategy_parser.c
 
 OBJ = $(SRC:.c=.o)
 
