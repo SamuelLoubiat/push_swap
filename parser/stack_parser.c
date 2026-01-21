@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_number.c                                     :+:      :+:    :+:   */
+/*   stack_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sloubiat <sloubiat@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../pushswap.h"
 
-int	check_already_contains(int *stack, int number, int size)
+static int	check_already_contains(int *stack, int number, int size)
 {
 	while (size > 0)
 	{
@@ -23,7 +23,7 @@ int	check_already_contains(int *stack, int number, int size)
 	return (0);
 }
 
-int	check_valid_number(char *nbr, int *stack, int size)
+static int	check_valid_number(char *nbr, int *stack, int size)
 {
 	char	*check;
 	int		nb;
@@ -42,4 +42,32 @@ int	check_valid_number(char *nbr, int *stack, int size)
 	}
 	free(check);
 	return (1);
+}
+
+int	*parse_stack(char **s, int len, int *stack_len)
+{
+	int		i;
+	int		*stack;
+	char	*check;
+
+	i = 0;
+	stack = malloc(sizeof(int) * len);
+	if (!stack)
+		return (NULL);
+	while (s[i])
+	{
+		if (s[i][0] == '-' && s[i][1] == '-')
+		{
+			i++;
+			continue ;
+		}
+		if (check_valid_number(s[i], stack, *stack_len))
+			stack[(*stack_len)++] = atoi(s[i++]);
+		else
+		{
+			free(stack);
+			return (NULL);
+		}
+	}
+	return (stack);
 }

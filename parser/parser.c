@@ -35,34 +35,6 @@ char	*concat_args(char **arg, int len)
 	return (s);
 }
 
-int	*parse_stack(char **s, int len, int *stack_len)
-{
-	int		i;
-	int		*stack;
-	char	*check;
-
-	i = 0;
-	stack = malloc(sizeof(int) * len);
-	if (!stack)
-		return (NULL);
-	while (s[i])
-	{
-		if (s[i][0] == '-' && s[i][1] == '-')
-		{
-			i++;
-			continue ;
-		}
-		if (check_valid_number(s[i], stack, *stack_len))
-			stack[(*stack_len)++] = atoi(s[i++]);
-		else
-		{
-			free(stack);
-			return (NULL);
-		}
-	}
-	return (stack);
-}
-
 void	clean_args(char **arg)
 {
 	int		i;
@@ -73,18 +45,33 @@ void	clean_args(char **arg)
 	free(arg);
 }
 
+char	**get_args(char **arg, int len)
+{
+	char	*concat;
+	char	**splited;
+
+	concat = concat_args(arg, len);
+	if (!concat)
+	{
+		write(2, "Error\n", 6);
+		return (NULL);
+	}
+	splited = ft_split(concat, ' ');
+	free(concat);
+	return (splited);
+}
+
 void	parse(char **arg, int len)
 {
 	char			**s;
 	enum strategy	strategy;
 	int				*stack;
 	int				stack_len;
-	char			*concat;
 
 	stack_len = 0;
-	concat = concat_args(arg, len);
-	s = ft_split(concat, ' ');
-	free(concat);
+	s = get_args(arg, len);
+	if (!s)
+		return ;
 	strategy = find_strategy(s);
 	if (strategy == ERROR)
 	{
@@ -101,11 +88,8 @@ void	parse(char **arg, int len)
 		write(2, "Error\n", 6);
 		return ;
 	}
-	/*while (stack_len > 0)
-		printf("%d\n", stack[stack_len-- - 1]);*/
 	clean_args(s);
-	float b = compute_disorder(stack, stack_len);
-	if (b != (float) 0)
+	if (compute_disorder(stack, stack_len) != (float) 0)
 		simple(stack, stack_len);
 	free(stack);
 }

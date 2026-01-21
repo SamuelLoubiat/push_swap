@@ -53,7 +53,7 @@ enum strategy	find_strategy(char **s)
 		is_strategy(s[i], &str, "--adaptive", ADAPTIVE);
 		if (str == ERROR)
 			return (str);
-		if (s[i][0]== '-' && s[i][1] == '-' && !str)
+		if (s[i][0] == '-' && s[i][1] == '-' && !str)
 			return (ERROR);
 		i++;
 	}

@@ -111,13 +111,6 @@ void simple(int *a, size_t len)
     }
 }
 
-int	ft_isdigit(int c)
-{
-    if (c >= 48 && c <= 57)
-        return (1);
-    return (0);
-}
-
 float compute_disorder(int *a, int size)
 {
     int mistakes = 0;

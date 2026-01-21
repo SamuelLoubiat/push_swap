@@ -5,7 +5,7 @@
 # include "libft/libft.h"
 enum strategy {ERROR = -1, SIMPLE = 1, MEDIUM = 2, COMPLEX = 3, ADAPTIVE = 4};
 enum strategy	find_strategy(char **s);
-int check_valid_number(char *nbr, int *stack, int size);
+int	*parse_stack(char **s, int len, int *stack_len);
 void simple(int *a, size_t len);
 float compute_disorder(int *a, int size);
 #endif
