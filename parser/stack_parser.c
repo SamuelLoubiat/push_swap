@@ -29,18 +29,15 @@ static int	check_valid_number(char *nbr, int *stack, int size)
 	int		nb;
 
 	nb = ft_atoi(nbr);
-	check = ft_itoa(nb);
-	if (ft_strncmp(nbr, check, ft_strlen(nbr)) != 0)
-	{
-		free(check);
-		return (0);
-	}
+	if (nb == 0)
+		if (!ft_strncmp(nbr, "0", ft_strlen(nbr))
+			&&!ft_strncmp(nbr, "-0", ft_strlen(nbr))
+			&& !ft_strncmp(check, "+0", ft_strlen(nbr)))
+			return (0);
 	if (check_already_contains(stack, nb, size))
 	{
-		free(check);
 		return (0);
 	}
-	free(check);
 	return (1);
 }
 

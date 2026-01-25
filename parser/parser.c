@@ -35,16 +35,6 @@ char	*concat_args(char **arg, int len)
 	return (s);
 }
 
-void	clean_args(char **arg)
-{
-	int		i;
-
-	i = 0;
-	while (arg[i])
-		free(arg[i++]);
-	free(arg);
-}
-
 char	**get_args(char **arg, int len)
 {
 	char	*concat;
@@ -74,20 +64,12 @@ void	parse(char **arg, int len)
 		return ;
 	strategy = find_strategy(s);
 	if (strategy == ERROR)
-	{
-		clean_args(s);
-		write(2, "Error\n", 6);
-		return ;
-	}
+		return (error_clear(s));
 	if (!strategy)
 		strategy = ADAPTIVE;
 	stack = parse_stack(s, len, &stack_len);
 	if (!stack)
-	{
-		clean_args(s);
-		write(2, "Error\n", 6);
-		return ;
-	}
+		return (error_clear(s));
 	clean_args(s);
 	if (compute_disorder(stack, stack_len) != (float) 0)
 		simple(stack, stack_len);

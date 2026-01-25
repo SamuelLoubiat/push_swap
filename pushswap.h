@@ -8,4 +8,7 @@ enum strategy	find_strategy(char **s);
 int	*parse_stack(char **s, int len, int *stack_len);
 void simple(int *a, size_t len);
 float compute_disorder(int *a, int size);
+
+void	error_clear(char **arg);
+void	clean_args(char **arg);
 #endif
