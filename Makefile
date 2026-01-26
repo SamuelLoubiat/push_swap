@@ -2,7 +2,7 @@ CC = cc
 
 NAME = push_swap
 
-HEADER = ft_printf.h
+HEADER = pushswap.h
 
 FLAGS = -Wall -Wextra -Werror
 
