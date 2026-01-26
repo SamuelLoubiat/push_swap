@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sloubiat <sloubiat@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/26 17:27:40 by sloubiat          #+#    #+#             */
+/*   Updated: 2026/01/26 17:27:43 by sloubiat         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../pushswap.h"
 
-static int del(int *stack, size_t *len)
+static int	del(int *stack, size_t *len)
 {
-	size_t i;
-	int temp;
+	size_t	i;
+	int		temp;
 
 	if (*len < 1)
 		return (0);
@@ -18,9 +30,9 @@ static int del(int *stack, size_t *len)
 	return (1);
 }
 
-static void add(int value, int *stack, size_t *len)
+static void	add(int value, int *stack, size_t *len)
 {
-	int i;
+	int	i;
 
 	i = *len;
 	while (i-- > 0)
@@ -29,9 +41,9 @@ static void add(int value, int *stack, size_t *len)
 	*len += 1;
 }
 
-void push_b(int *b, size_t *len_b, int *a, size_t *len_a)
+void	push_b(int *b, size_t *len_b, int *a, size_t *len_a)
 {
-	int value;
+	int	value;
 
 	value = a[0];
 	if (del(a, len_a))
@@ -41,9 +53,9 @@ void push_b(int *b, size_t *len_b, int *a, size_t *len_a)
 	}
 }
 
-void push_a(int *b, size_t *len_b, int *a, size_t *len_a)
+void	push_a(int *b, size_t *len_b, int *a, size_t *len_a)
 {
-	int value;
+	int	value;
 
 	value = b[0];
 	if (del(b, len_b))
