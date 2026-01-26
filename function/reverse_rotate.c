@@ -26,13 +26,13 @@ static int	rotate(int *stack, size_t len)
 		stack[i + 1] = stack[i];
 		i--;
 	}
-	stack[0]  = temp;
+	stack[0] = temp;
 	return (1);
 }
 
 void	reverse_rotate_a(int *a, size_t len)
 {
-	if(rotate(a, len))
+	if (rotate(a, len))
 	{
 		write(1, "rra\n", 4);
 	}
@@ -40,7 +40,7 @@ void	reverse_rotate_a(int *a, size_t len)
 
 void	reverse_rotate_b(int *b, size_t len)
 {
-	if(rotate(b, len))
+	if (rotate(b, len))
 	{
 		write(1, "rrb\n", 4);
 	}

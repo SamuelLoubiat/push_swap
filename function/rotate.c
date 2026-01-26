@@ -12,10 +12,10 @@
 
 #include "../pushswap.h"
 
-static int rotate(int *stack, size_t len)
+static int	rotate(int *stack, size_t len)
 {
-	size_t i;
-	int temp;
+	size_t	i;
+	int		temp;
 
 	if (len < 2)
 		return (0);
@@ -26,13 +26,13 @@ static int rotate(int *stack, size_t len)
 		stack[i] = stack[i + 1];
 		i++;
 	}
-	stack[i]  = temp;
+	stack[i] = temp;
 	return (1);
 }
 
 void	rotate_a(int *a, size_t len)
 {
-	if(rotate(a, len))
+	if (rotate(a, len))
 	{
 		write(1, "ra\n", 3);
 	}
@@ -40,7 +40,7 @@ void	rotate_a(int *a, size_t len)
 
 void	rotate_b(int *b, size_t len)
 {
-	if(rotate(b, len))
+	if (rotate(b, len))
 	{
 		write(1, "rb\n", 3);
 	}
@@ -48,8 +48,8 @@ void	rotate_b(int *b, size_t len)
 
 void	rotate_rr(int *a, size_t len_a, int *b, size_t len_b)
 {
-	int res_a;
-	int res_b;
+	int	res_a;
+	int	res_b;
 
 	res_a = rotate(a, len_a);
 	res_b = rotate(b, len_b);
