@@ -11,28 +11,6 @@
 /* ************************************************************************** */
 #include "pushswap.h"
 
-size_t find_min_index(const int *a, size_t len)
-{
-    size_t i;
-    size_t index;
-    int min;
-
-    if (len == 0)
-        return -1;
-    min = 2147483647;
-    i = 0;
-    while (i < len)
-    {
-        if (a[i] < min)
-        {
-            min = a[i];
-            index = i;
-        }
-        i++;
-    }
-    return index;
-}
-
 void rotate(int *a, size_t len)
 {
 int temp;
@@ -75,40 +53,6 @@ while (i < *len)
 }
 *len -= 1;
 printf("pb\n");
-}
-
-void simple(int *a, size_t len)
-{
-    size_t search;
-    size_t i;
-    size_t olen;
-
-    olen = len;
-    while (len >= 1)
-    {
-        i = 0;
-        search = find_min_index(a, len);
-        if (search != 0)
-        {
-            if ((len /2) > search)
-                while (i++ != search)
-                    rotate(a, len);
-            else
-            {
-                while (search != 0)
-                {
-                    rrotate(a, len);
-                    search = find_min_index(a, len);
-                }
-            }
-        }
-        pushb(a, &len);
-    }
-
-    while (olen-- > 0)
-    {
-        printf("pa\n");
-    }
 }
 
 float compute_disorder(int *a, int size)

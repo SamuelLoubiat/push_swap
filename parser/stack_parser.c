@@ -41,7 +41,7 @@ static int	check_valid_number(char *nbr, int *stack, int size)
 	return (1);
 }
 
-int	*parse_stack(char **s, int len, int *stack_len)
+int	*parse_stack(char **s, int len, size_t *stack_len)
 {
 	int		i;
 	int		*stack;

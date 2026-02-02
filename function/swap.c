@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../pushswap.h"
+
 static void	swap(int *stack)
 {
 	int	temp;
@@ -31,7 +33,7 @@ void	swap_b(int *a, int size)
 {
 	if (size < 2)
 		return ;
-	swap_b(a);
+	swap(a);
 	write(1, "sb\n", 3);
 }
 
