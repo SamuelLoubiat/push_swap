@@ -25,7 +25,6 @@ static int	check_already_contains(int *stack, int number, int size)
 
 static int	check_valid_number(char *nbr, int *stack, int size)
 {
-	char	*check;
 	int		nb;
 
 	nb = ft_atoi(nbr);
@@ -45,7 +44,6 @@ int	*parse_stack(char **s, int len, size_t *stack_len)
 {
 	int		i;
 	int		*stack;
-	char	*check;
 
 	i = 0;
 	stack = malloc(sizeof(int) * len);

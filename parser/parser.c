@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "../pushswap.h"
-void selection(int *a, size_t *len_a, int *b, size_t *len_b);
+
+void	selection(int *a, size_t *len_a, int *b, size_t *len_b);
 
 char	*concat_args(char **arg, int len)
 {
@@ -58,8 +59,8 @@ void	parse(char **arg, int len)
 	enum strategy	strategy;
 	int				*stack;
 	int				*stack_b;
-	size_t				stack_len;
-	size_t				len_b;
+	size_t			stack_len;
+	size_t			len_b;
 
 	stack_len = 0;
 	len_b = 0;
